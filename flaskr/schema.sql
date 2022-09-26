@@ -26,3 +26,12 @@ CREATE TABLE ip_post(
 	FOREIGN KEY (author_id) REFERENCES user (id)
 );
 
+CREATE TABLE ip_list(
+	id INTEGER PRIMARY KEY AUTOINCREMENT,
+	author_id INTEGER NOT NULL,
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	ip_address TEXT NOT NULL,
+	ip_labels TEXT NOT NULL,
+	FOREIGN KEY (author_id) REFERENCES user (id)
+);
+

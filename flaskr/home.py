@@ -27,7 +27,7 @@ def index():
 
 # method to create post to take in an IP label and a list of addresses belonging to it 
 # OPTIONAL: make sure that the user has logged in 
-# TODO: Select from pre-existing labels/ip addresses that already exist in the database (can this even be done?)
+# TODO: Make sure that the IP addresses entered are actually IP addresses 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
