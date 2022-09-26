@@ -39,6 +39,11 @@ def create_app(test_config=None):
 	# add blog to app
 	from . import blog
 	app.register_blueprint(blog.bp)
+	app.add_url_rule('/blog', endpoint='index')
+
+	# add home page to app
+	from . import home 
+	app.register_blueprint(home.bp)
 	app.add_url_rule('/', endpoint='index')
 
 	return app

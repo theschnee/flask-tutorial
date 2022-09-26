@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}New IP Post{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">IP label</label>
+    <input name="ip_label" id="ip_label" value="{{ request.form['ip_label'] }}" required>
+    <label for="body">IP addresses</label>
+    <textarea name="ip_addresses" id="ip_addresses">{{ request.form['ip_addresses'] }}</textarea>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}

@@ -7,7 +7,7 @@ from flaskr.db import get_db
 bp = Blueprint('blog', __name__)
 
 # method to show all of the posts on the blog page 
-@bp.route('/')
+@bp.route('/blog')
 def index():
     db = get_db()
     # TODO: Figure out why there are no commas inside the execute function
@@ -19,7 +19,7 @@ def index():
     return render_template('blog/index.html', posts=posts)
 
 # method to create blog post on the condition that the user has logged in
-@bp.route('/create', methods=('GET', 'POST'))
+@bp.route('/blog/create', methods=('GET', 'POST'))
 @login_required
 def create():
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def get_post(id, check_author=True):
     return post
 
 # method to update a blog post on the condition that the user has logged in 
-@bp.route('/<int:id>/update', methods=('GET', 'POST'))
+@bp.route('/blog/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
     post = get_post(id)
@@ -90,7 +90,7 @@ def update(id):
     return render_template('blog/update.html', post=post)
 
 # method to delete a blog post on the condition that the user has logged in
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/blog/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
     get_post(id)
@@ -98,3 +98,4 @@ def delete(id):
     db.execute('DELETE FROM post WHERE id = ?', (id,))
     db.commit()
     return redirect(url_for('blog.index'))
+    
